@@ -1,4 +1,4 @@
-import customerGetters from '../db/getters'
+import { customerGetters } from 'customer'
 
 class CustomerQueryResolvers {
   /**

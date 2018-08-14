@@ -1,7 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable('customers', function (t) {
     t.string('id').primary().unique()
-    t.string('customerId').unique()
     t.string('fullName').notNullable()
     t.string('email')
     t.string('phone')

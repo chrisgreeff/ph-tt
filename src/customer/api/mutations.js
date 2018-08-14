@@ -1,6 +1,6 @@
 import { CustomerInputType, CustomerType } from './types'
 import { GraphQLString, GraphQLNonNull } from 'graphql'
-import customerMutationResolvers from '../resolvers/mutation'
+import { customerMutationResolvers } from 'customer'
 
 export default {
   updateCustomer: {

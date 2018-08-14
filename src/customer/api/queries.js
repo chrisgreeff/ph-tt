@@ -1,6 +1,6 @@
 import { CustomerType } from './types'
 import { GraphQLList, GraphQLNonNull, GraphQLString } from 'graphql'
-import customerQueryResolvers from '../resolvers/query'
+import { customerQueryResolvers } from 'customer'
 
 export default {
   customers: {

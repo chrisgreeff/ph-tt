@@ -1,4 +1,4 @@
-import customerUpdaters from '../db/updaters'
+import { customerUpdaters } from 'customer'
 
 class CustomerMutationResolvers {
   /**

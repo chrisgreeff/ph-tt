@@ -1,7 +1,6 @@
-import { GraphQLString, GraphQLObjectType, GraphQLInputObjectType, GraphQLNonNull } from 'graphql'
+import { GraphQLString, GraphQLObjectType, GraphQLList, GraphQLInputObjectType, GraphQLNonNull } from 'graphql'
 
 const baseFields = {
-  customerId: { type: new GraphQLNonNull(GraphQLString) },
   fullName: { type: new GraphQLNonNull(GraphQLString) },
   email: { type: GraphQLString },
   phone: { type: GraphQLString },
@@ -13,6 +12,7 @@ const CustomerType = new GraphQLObjectType({
   description: 'This represents a customer',
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
+    notes: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
     ...baseFields,
   })
 })

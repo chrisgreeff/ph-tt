@@ -1,5 +1,6 @@
-import { forEach, filter } from 'lodash'
+import { forEach, filter, map } from 'lodash'
 import { errorService } from 'services'
+import { customerNoteGetters } from 'customer-note'
 import { knex } from 'db'
 
 class CustomerGetterActions {
@@ -12,11 +13,11 @@ class CustomerGetterActions {
     try {
       const [ customers, notes ] = await Promise.all([
         knex('customers').select(),
-        this.getCustomerNotes()
+        customerNoteGetters.getCustomerNotes()
       ])
 
       forEach(customers, (customer) => {
-        customer.notes = filter(notes, { customerId: customer.id })
+        customer.notes = map(filter(notes, { customerId: customer.id }), 'note')
       })
 
       return customers
@@ -38,40 +39,9 @@ class CustomerGetterActions {
         .select()
         .where({ id })
 
-      customer.notes = await this.getCustomerNotesByCustomerId(id)
+      customer.notes = await customerNoteGetters.getCustomerNotesByCustomerId(id)
 
       return customer
-    } catch (error) {
-      return errorService.handleDbError(error)
-    }
-  }
-
-  /**
-   * Fetches all customer notes.
-   *
-   * @method getCustomerNotes
-   */
-  async getCustomerNotes () {
-    try {
-      return knex('customer_notes')
-        .select()
-    } catch (error) {
-      return errorService.handleDbError(error)
-    }
-  }
-
-  /**
-   * Fetches all customer notes with the passed customer id.
-   *
-   * @method getCustomerNotesByCustomerId
-   * @param {String} customerId
-   *        The customer id to fetch the notes with.
-   */
-  async getCustomerNotesByCustomerId (customerId) {
-    try {
-      return knex('customer_notes')
-        .select()
-        .where({ customerId })
     } catch (error) {
       return errorService.handleDbError(error)
     }
