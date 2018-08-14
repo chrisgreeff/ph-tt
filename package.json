@@ -1,0 +1,38 @@
+{
+  "name": "ph-tt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon -e js index.js"
+  },
+  "repository": "git@github.com:chrisgreeff/ph-tt.git",
+  "author": "Chris Greeff <chris.r.greeff@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-errors": "^1.9.0",
+    "apollo-server-express": "^1.3.6",
+    "app-module-path": "^2.2.0",
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-display-name": "^6.25.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "eslint": "^4.19.1",
+    "eslint-plugin-babel": "^5.1.0",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "knex": "^0.14.6",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "nodemon": "^1.17.5",
+    "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0"
+  }
+}
