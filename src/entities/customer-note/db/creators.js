@@ -1,4 +1,4 @@
-import { errorService } from 'services'
+import { uidService, errorService } from 'services'
 import { knex } from 'db'
 
 class CustomerNoteCreatorActions {
@@ -10,9 +10,13 @@ class CustomerNoteCreatorActions {
    *        Input to create the customer note from.
    */
   async createCustomerNote (input) {
+    input.id = uidService.generate('not_')
+
     try {
-      return knex('customer_notes')
+      await knex('customer_notes')
         .insert(input)
+
+      return input
     } catch (error) {
       return errorService.handleDbError(error)
     }

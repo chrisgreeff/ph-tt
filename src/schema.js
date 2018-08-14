@@ -1,13 +1,14 @@
 import { GraphQLSchema, GraphQLObjectType } from 'graphql'
 
-import customerQueries from 'customer/api/queries'
-import customerMutations from 'customer/api/mutations'
+import { customerQueries, customerMutations } from 'entities/customer'
+import { customerNoteQueries, customerNoteMutations } from 'entities/customer-note'
 
 const query = new GraphQLObjectType({
   name: 'Queries',
   description: 'Schema Query Root',
   fields: () => ({
-    ...customerQueries
+    ...customerQueries,
+    ...customerNoteQueries,
   })
 })
 
@@ -15,7 +16,8 @@ const mutation = new GraphQLObjectType({
   name: 'Mutations',
   description: 'Schema Mutation Root',
   fields: () => ({
-    ...customerMutations
+    ...customerMutations,
+    ...customerNoteMutations,
   })
 })
 

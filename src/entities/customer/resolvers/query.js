@@ -1,4 +1,4 @@
-import { customerGetters } from 'customer'
+import { customerGetters } from 'entities/customer'
 
 class CustomerQueryResolvers {
   /**

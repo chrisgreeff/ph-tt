@@ -1,6 +1,6 @@
 import { CustomerNoteInputType, CustomerNoteType } from './types'
 import { GraphQLString, GraphQLNonNull } from 'graphql'
-import { customerNoteMutationResolvers } from 'customer-note'
+import { customerNoteMutationResolvers } from 'entities/customer-note'
 
 export default {
   createCustomerNote: {

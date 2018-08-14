@@ -1,6 +1,6 @@
 import { forEach, filter, map } from 'lodash'
 import { errorService } from 'services'
-import { customerNoteGetters } from 'customer-note'
+import { customerNoteGetters } from 'entities/customer-note'
 import { knex } from 'db'
 
 class CustomerGetterActions {

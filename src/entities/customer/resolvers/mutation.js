@@ -1,4 +1,4 @@
-import { customerUpdaters } from 'customer'
+import { customerUpdaters } from 'entities/customer'
 
 class CustomerMutationResolvers {
   /**
