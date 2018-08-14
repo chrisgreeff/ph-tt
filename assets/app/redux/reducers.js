@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 import { routerReducer } from 'react-router-redux'
 
-import member from './member'
+import customer from './customer'
 
 const rootReducer = combineReducers({
-  member,
+  customer,
   routing: routerReducer
 })
 
