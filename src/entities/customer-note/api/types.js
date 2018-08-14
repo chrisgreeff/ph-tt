@@ -10,6 +10,7 @@ const CustomerNoteType = new GraphQLObjectType({
   description: 'This represents a customer note',
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
+    createdAt: { type: new GraphQLNonNull(GraphQLString) },
     ...baseFields,
   })
 })

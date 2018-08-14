@@ -1,3 +1,4 @@
+import { forEach } from 'lodash'
 import { errorService } from 'services'
 import { knex } from 'db'
 
@@ -9,8 +10,14 @@ class CustomerNoteGetterActions {
    */
   async getCustomerNotes () {
     try {
-      return knex('customer_notes')
+      const customerNotes = await knex('customer_notes')
         .select()
+
+      forEach(customerNotes, (customerNote) => {
+        customerNote.createdAt = customerNote.created_at
+      })
+
+      return customerNotes
     } catch (error) {
       return errorService.handleDbError(error)
     }
@@ -25,11 +32,13 @@ class CustomerNoteGetterActions {
    */
   async getCustomerNoteById (id) {
     try {
-      const [ note ] = await knex('customer_notes')
+      const [ customerNote ] = await knex('customer_notes')
         .select()
         .where({ id })
 
-      return note
+      customerNote.createdAt = customerNote.created_at
+
+      return customerNote
     } catch (error) {
       return errorService.handleDbError(error)
     }
@@ -44,9 +53,15 @@ class CustomerNoteGetterActions {
    */
   async getCustomerNoteByCustomerId (customerId) {
     try {
-      return knex('customer_notes')
+      const customerNotes = await knex('customer_notes')
         .select()
         .where({ customerId })
+
+      forEach(customerNotes, (customerNote) => {
+        customerNote.createdAt = customerNote.created_at
+      })
+
+      return customerNotes
     } catch (error) {
       return errorService.handleDbError(error)
     }

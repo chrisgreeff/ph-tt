@@ -1,4 +1,4 @@
-import { forEach, filter, map } from 'lodash'
+import { forEach, filter } from 'lodash'
 import { errorService } from 'services'
 import { customerNoteGetters } from 'entities/customer-note'
 import { knex } from 'db'
@@ -17,7 +17,8 @@ class CustomerGetterActions {
       ])
 
       forEach(customers, (customer) => {
-        customer.notes = map(filter(notes, { customerId: customer.id }), 'note')
+        customer.notes = filter(notes, { customerId: customer.id })
+        customer.createdAt = customer.created_at
       })
 
       return customers
@@ -40,6 +41,7 @@ class CustomerGetterActions {
         .where({ id })
 
       customer.notes = await customerNoteGetters.getCustomerNotesByCustomerId(id)
+      customer.createdAt = customer.created_at
 
       return customer
     } catch (error) {

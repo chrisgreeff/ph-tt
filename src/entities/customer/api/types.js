@@ -1,4 +1,5 @@
 import { GraphQLString, GraphQLObjectType, GraphQLList, GraphQLInputObjectType, GraphQLNonNull } from 'graphql'
+import { CustomerNoteType } from 'entities/customer-note'
 
 const baseFields = {
   fullName: { type: new GraphQLNonNull(GraphQLString) },
@@ -12,7 +13,8 @@ const CustomerType = new GraphQLObjectType({
   description: 'This represents a customer',
   fields: () => ({
     id: { type: new GraphQLNonNull(GraphQLString) },
-    notes: { type: new GraphQLNonNull(new GraphQLList(GraphQLString)) },
+    notes: { type: new GraphQLNonNull(new GraphQLList(CustomerNoteType)) },
+    createdAt: { type: new GraphQLNonNull(GraphQLString) },
     ...baseFields,
   })
 })
