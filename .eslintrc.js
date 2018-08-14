@@ -1,14 +1,19 @@
 module.exports = {
   "env": {
     "node": true,
+    "browser": true,
     "es6": true
   },
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:react/recommended"
   ],
   "parser": "babel-eslint",
   "parserOptions": {
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "rules": {
     "indent": [
@@ -29,6 +34,7 @@ module.exports = {
     ]
   },
   "plugins": [
-    "babel"
+    "babel",
+    "react"
   ]
 };
