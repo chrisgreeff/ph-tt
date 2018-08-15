@@ -32,6 +32,7 @@ class CustomerViewPage extends React.Component {
 
     return (
       <LoadingPage loading={loading}>
+        <Link to='/customers'>Back</Link>
         <h1>{customer.fullName}</h1>
         <div>{customer.email}</div>
         <div>{customer.phone}</div>
