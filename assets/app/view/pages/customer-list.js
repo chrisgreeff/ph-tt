@@ -44,6 +44,7 @@ class CustomerListPage extends React.Component {
               <th>Email</th>
               <th>Phone</th>
               <th>Status</th>
+              <th>Note Count</th>
               <th>Created At</th>
             </tr>
           </thead>
@@ -59,6 +60,7 @@ class CustomerListPage extends React.Component {
                 <td>{customer.email}</td>
                 <td>{customer.phone}</td>
                 <td>{customer.status}</td>
+                <td>{customer.notes.length}</td>
                 <td>{customer.createdAt.format('DD/MM/YYYY HH:MM')}</td>
               </tr>
             ))}

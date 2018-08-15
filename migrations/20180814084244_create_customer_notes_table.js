@@ -3,7 +3,7 @@ exports.up = function (knex) {
     t.string('id').primary().unique()
     t.string('customerId').notNullable()
     t.foreign('customerId').references('customers.id')
-    t.string('note').notNullable()
+    t.string('content').notNullable()
     t.timestamps(false, true)
   })
 }

@@ -47,11 +47,11 @@ class CustomerNoteGetterActions {
   /**
    * Fetches note with passed customer id.
    *
-   * @method getCustomerNoteByCustomerId
+   * @method getCustomerNotesByCustomerId
    * @param {String} customerId
    *        The customer id.
    */
-  async getCustomerNoteByCustomerId (customerId) {
+  async getCustomerNotesByCustomerId (customerId) {
     try {
       const customerNotes = await knex('customer_notes')
         .select()

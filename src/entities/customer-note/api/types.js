@@ -2,7 +2,7 @@ import { GraphQLString, GraphQLObjectType, GraphQLInputObjectType, GraphQLNonNul
 
 const baseFields = {
   customerId: { type: new GraphQLNonNull(GraphQLString) },
-  note: { type: GraphQLString },
+  content: { type: GraphQLString },
 }
 
 const CustomerNoteType = new GraphQLObjectType({

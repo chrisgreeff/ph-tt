@@ -2,7 +2,7 @@ export default class CustomerNoteModel {
   constructor (config = {}) {
     this.id = config.id
     this.customerId = config.customerId
-    this.note = config.note || ''
+    this.content = config.content || ''
     this.createdAt = new Date(config.createdAt)
   }
 
@@ -15,7 +15,7 @@ export default class CustomerNoteModel {
   graphalise () {
     return `{
       customerId: "${this.customerId}"
-      note: "${this.note}"
+      content: "${this.content}"
     }`
   }
 }

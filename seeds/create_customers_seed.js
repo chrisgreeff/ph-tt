@@ -12,8 +12,8 @@ exports.seed = async function(knex) {
   ])
 
   await knex('customer_notes').insert([
-    { id: 'not_1', customerId: 'cus_1', note: 'This is a great customer!' },
-    { id: 'not_2', customerId: 'cus_1', note: 'Can\'t say it enough, great customer!' },
-    { id: 'not_3', customerId: 'cus_4', note: 'This customer has lost their bag... has anyone seen it?' },
+    { id: 'not_1', customerId: 'cus_1', content: 'This is a great customer!' },
+    { id: 'not_2', customerId: 'cus_1', content: 'Can\'t say it enough, great customer!' },
+    { id: 'not_3', customerId: 'cus_4', content: 'This customer has lost their bag... has anyone seen it?' },
   ])
 }

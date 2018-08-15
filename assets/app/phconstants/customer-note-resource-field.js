@@ -1,6 +1,6 @@
 export default `
   id
   customerId
-  note
+  content
   createdAt
 `
