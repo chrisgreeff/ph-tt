@@ -5,7 +5,7 @@ exports.up = function (knex) {
     t.string('email')
     t.string('phone')
     t.enum('status', ['prospective', 'current', 'non-active']).notNullable()
-    t.timestamps(false, true)
+    t.timestamps(true, true)
   })
 }
 

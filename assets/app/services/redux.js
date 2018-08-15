@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { customerOperations, customerSelectors } from 'redux/customer'
 
 class ReduxService {
-  connectPage (Class) {
+  connect (Class) {
     const mapStateToProps = (state) => ({
       customer: customerSelectors.getCustomerState(state),
       customers: customerSelectors.getCustomersState(state),

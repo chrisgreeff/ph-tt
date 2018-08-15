@@ -1,3 +1,4 @@
+import { sortBy } from 'lodash'
 import actions from './actions'
 import { customerResource } from 'resources'
 import { CustomerModel } from 'models'
@@ -27,7 +28,7 @@ const setCustomers = actions.setCustomers
  */
 const fetchAndSetCustomers = () => (dispatch) => {
   return customerResource.customers().then((customers) => {
-    dispatch(setCustomers(customers || []))
+    dispatch(setCustomers(sortBy(customers || []), 'createdAt'))
 
     return customers
   })

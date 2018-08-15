@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start-server": "cross-env NODE_ENV=development nodemon -e js index.js",
+    "start-server": "cross-env NODE_ENV=development nodemon --watch src -e js index.js",
     "start-client": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.js --mode development --open --progress"
   },
   "repository": "git@github.com:chrisgreeff/ph-tt.git",
@@ -23,6 +23,7 @@
     "babel-plugin-transform-react-display-name": "^6.25.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -30,9 +31,9 @@
     "cors": "^2.8.4",
     "cross-env": "^5.2.0",
     "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-react": "^7.9.1",
-    "eslint": "^4.19.1",
     "express": "^4.16.3",
     "file-loader": "^1.1.11",
     "graphql": "^0.13.2",
@@ -45,6 +46,8 @@
     "node-sass": "^4.9.0",
     "nodemon": "^1.17.5",
     "pg": "^7.4.3",
+    "prop-types": "^15.6.2",
+    "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
@@ -52,18 +55,17 @@
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.4",
     "react-transition-group": "^2.3.1",
-    "react": "^16.4.1",
     "redbox-react": "^1.6.0",
-    "redux-thunk": "^2.3.0",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "reselect": "^3.0.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "stylelint-config-standard": "^18.2.0",
     "uglifyjs-webpack-plugin": "^1.2.6",
+    "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4",
-    "webpack-merge": "^4.1.3",
-    "webpack": "^4.12.0"
+    "webpack-merge": "^4.1.3"
   }
 }

@@ -5,6 +5,7 @@ export default `
   fullName
   email
   phone
+  status
   createdAt
   notes { ${CUSTOMER_NOTE_RESOURCE_FIELD} }
 `

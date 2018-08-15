@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { map } from 'lodash'
 import { CustomerNoteModel } from 'models'
 
@@ -9,7 +10,7 @@ export default class CustomerModel {
     this.phone = config.phone || ''
     this.notes = map(config.notes, (note) => new CustomerNoteModel(note))
     this.status = config.status
-    this.createdAt = new Date(config.createdAt)
+    this.createdAt = moment(new Date(config.createdAt))
   }
 
   /**

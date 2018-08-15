@@ -2,7 +2,7 @@ import { createApolloFetch } from 'apollo-fetch'
 
 class ApiService {
   constructor () {
-    this.fetch = createApolloFetch({ uri: 'localhost:3001/graphql' })
+    this.fetch = createApolloFetch({ uri: 'http://localhost:3001/graphql' })
   }
 
   /**

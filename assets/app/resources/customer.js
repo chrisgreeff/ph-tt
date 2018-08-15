@@ -1,12 +1,12 @@
 import { map } from 'lodash'
 import { apiService } from 'services'
 import { CustomerModel } from 'models'
-import { CUSTOMER_RESOURCE_FIELDS } from 'phconstants'
+import { CUSTOMER_RESOURCE_FIELD } from 'phconstants'
 
 class CustomerResource {
   customers () {
     return apiService.query(`{
-      customers { ${CUSTOMER_RESOURCE_FIELDS} }
+      customers { ${CUSTOMER_RESOURCE_FIELD} }
     }`).then(({ customers }) => map(customers, (customer) => new CustomerModel(customer)))
   }
 
@@ -14,13 +14,13 @@ class CustomerResource {
     return apiService.query(`{
       getCustomer(
         id: "${id}"
-      ) { ${CUSTOMER_RESOURCE_FIELDS} }
+      ) { ${CUSTOMER_RESOURCE_FIELD} }
     }`).then(({ getCustomer }) => getCustomer && new CustomerModel(getCustomer))
   }
 
   updateCustomer (id, model) {
     return apiService.query(`mutation {
-      updateCustomer(id: "${id}", input: ${model.graphalise()}) { ${CUSTOMER_RESOURCE_FIELDS} }
+      updateCustomer(id: "${id}", input: ${model.graphalise()}) { ${CUSTOMER_RESOURCE_FIELD} }
     }`).then(({ updateCustomer }) => updateCustomer && new CustomerModel(updateCustomer))
   }
 
@@ -29,7 +29,7 @@ class CustomerResource {
       updateCustomerStatus(
         id: "${id}",
         status: "${status}"
-      ) { ${CUSTOMER_RESOURCE_FIELDS} }
+      ) { ${CUSTOMER_RESOURCE_FIELD} }
     }`).then(({ updateCustomerStatus }) => updateCustomerStatus && new CustomerModel(updateCustomerStatus))
   }
 }
