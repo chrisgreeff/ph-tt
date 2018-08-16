@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { reduxService } from 'services'
-import { AddNoteModal } from 'view/modals'
+import { AddNoteModal, UpdateStatusModal } from 'view/modals'
 import { LoadingPage, Section } from 'view/components'
 
 class CustomerViewPage extends React.Component {
@@ -33,6 +33,12 @@ class CustomerViewPage extends React.Component {
     const { showModal } = this.props
 
     showModal('add-note-modal')
+  }
+
+  onUpdateStatusClick = () => {
+    const { showModal } = this.props
+
+    showModal('update-status-modal')
   }
 
   render () {
@@ -93,6 +99,7 @@ class CustomerViewPage extends React.Component {
           }
         </Section>
         <AddNoteModal />
+        <UpdateStatusModal />
       </LoadingPage>
     )
   }
