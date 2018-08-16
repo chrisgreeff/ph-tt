@@ -36,7 +36,7 @@ class CustomerListPage extends React.Component {
       <LoadingPage loading={loading}>
         <h1>Customers</h1>
 
-        <table>
+        <table className='table'>
           <thead>
             <tr>
               <th>ID</th>
