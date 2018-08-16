@@ -13,12 +13,12 @@ export default class LoadingPage extends React.Component {
     const { children, loading } = this.props
 
     return (
-      <div className='loading-page'>
+      <React.Fragment>
         {loading
-          ? 'Loading Page...'
-          : <React.Fragment>{children}</React.Fragment>
+          ? <div className='page page--loading'>Loading Page...</div>
+          : <div className='page'>{children}</div>
         }
-      </div>
+      </React.Fragment>
     )
   }
 }
