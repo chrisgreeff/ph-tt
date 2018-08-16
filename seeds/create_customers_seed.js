@@ -3,7 +3,7 @@ exports.seed = async function(knex) {
   await knex('customers').del()
 
   await knex('customers').insert([
-    { id: 'cus_1', fullName: 'Abhishek Lamis', email: 'Abhishek Lamis@email.com', phone: '021123456', status: 'prospective' },
+    { id: 'cus_1', fullName: 'Abhishek Lamis', email: 'abhishek.lamis@email.com', phone: '021123456', status: 'prospective' },
     { id: 'cus_2', fullName: 'Carina Jadvyga', email: 'carina.jadvyga@email.com', phone: '021321654', status: 'prospective' },
     { id: 'cus_3', fullName: 'Lakisha Ilija', email: 'lakisha.ilija@email.com', phone: '027987765', status: 'current' },
     { id: 'cus_4', fullName: 'Pascaline Riny', email: 'pascaline.riny@email.com', phone: '027847262', status: 'current' },

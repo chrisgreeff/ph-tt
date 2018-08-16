@@ -53,7 +53,7 @@ class CustomerListPage extends React.Component {
               <tr key={index}>
                 <td>{customer.id}</td>
                 <td>
-                  <Link to={`/customers/${customer.id}`}>
+                  <Link className='link' to={`/customers/${customer.id}`}>
                     {customer.fullName}
                   </Link>
                 </td>

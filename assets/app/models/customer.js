@@ -13,12 +13,6 @@ export default class CustomerModel {
     this.createdAt = moment(new Date(config.createdAt))
   }
 
-  /**
-   * Graphalises the model.
-   *
-   * @method graphalise
-   * @return {Object} Graphalised model.
-   */
   graphalise () {
     return `{
       fullName: "${this.fullName}"

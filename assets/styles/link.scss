@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #7F8FA4;
+
+  &:hover { text-decoration: underline; }
+
+  &:disabled,
+  &.disabled,
+  &[disabled] {
+    cursor: disabled !important;
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+  }
+}

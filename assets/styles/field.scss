@@ -1,0 +1,6 @@
+.field {
+  flex: 1;
+  margin-bottom: 15px;
+
+  &:last-child { margin-bottom: 0; }
+}

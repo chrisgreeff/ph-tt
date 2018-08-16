@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { reduxService } from 'services'
 
-import { LoadingPage } from 'view/components'
+import { LoadingPage, Section } from 'view/components'
 
 class CustomerViewPage extends React.Component {
   static propTypes = {
@@ -32,19 +32,48 @@ class CustomerViewPage extends React.Component {
 
     return (
       <LoadingPage loading={loading}>
-        <Link to='/customers'>Back</Link>
-        <h1>{customer.fullName}</h1>
-        <div>{customer.email}</div>
-        <div>{customer.phone}</div>
-        <div>{customer.status}</div>
-        <div>{customer.createdAt.format('DD/MM/YYYY HH:MM')}</div>
-        <div>
+        <Section>
+          <Link className='link' to='/customers'>Back</Link>
+          <h1>{customer.fullName}</h1>
+        </Section>
+
+        <Section>
+          <div className='section-content section-content--header'>
+            Personal Information
+          </div>
+          <div className='section-content'>
+            <div className='field'>
+              <label className='label'>Email</label>
+              <div className='value'>{customer.email}</div>
+            </div>
+            <div className='field'>
+              <label className='label'>Phone</label>
+              <div className='value'>{customer.phone}</div>
+            </div>
+            <div className='field'>
+              <label className='label'>Status</label>
+              <div className='value'>{customer.status}</div>
+            </div>
+            <div className='field'>
+              <label className='label'>CreatedAt</label>
+              <div className='value'>{customer.createdAt.format('DD/MM/YYYY HH:MM')}</div>
+            </div>
+          </div>
+        </Section>
+
+        <Section>
+          <div className='section-content section-content--header'>
+            Notes
+          </div>
           {map(customer.notes, (note, index) => (
-            <div key={index}>
+            <div className='section-content' key={index}>
               {note.content}
             </div>
           ))}
-        </div>
+          <div className='section-content'>
+            <button className='button button--primary' onClick={this.onAddNoteClick}>Add Note</button>
+          </div>
+        </Section>
       </LoadingPage>
     )
   }

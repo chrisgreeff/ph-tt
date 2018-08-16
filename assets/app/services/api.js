@@ -5,13 +5,6 @@ class ApiService {
     this.fetch = createApolloFetch({ uri: 'http://localhost:3001/graphql' })
   }
 
-  /**
-   * Runs the passed query.
-   *
-   * @method query
-   * @param {String} query
-   *        The query to run.
-   */
   query (query) {
     return this.fetch({ query }).then(({ data, errors }) => {
       if (errors && errors.length) {
