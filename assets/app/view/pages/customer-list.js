@@ -102,35 +102,35 @@ class CustomerListPage extends React.Component {
                 <button className='button button--link'
                   onClick={() => this.onSortClick('fullName')}>
                   Name
-                 {this.renderSortIcon('fullName')}
+                  {this.renderSortIcon('fullName')}
                 </button>
               </th>
               <th>
                 <button className='button button--link'
                   onClick={() => this.onSortClick('email')}>
                   Email
-                 {this.renderSortIcon('email')}
+                  {this.renderSortIcon('email')}
                 </button>
               </th>
               <th>
                 <button className='button button--link'
                   onClick={() => this.onSortClick('phone')}>
                   Phone
-                 {this.renderSortIcon('phone')}
+                  {this.renderSortIcon('phone')}
                 </button>
               </th>
               <th>
                 <button className='button button--link'
                   onClick={() => this.onSortClick('status')}>
                   Status
-                 {this.renderSortIcon('status')}
+                  {this.renderSortIcon('status')}
                 </button>
               </th>
               <th>
                 <button className='button button--link'
                   onClick={() => this.onSortClick('createdAt')}>
                   Created At
-                 {this.renderSortIcon('createdAt')}
+                  {this.renderSortIcon('createdAt')}
                 </button>
               </th>
             </tr>
