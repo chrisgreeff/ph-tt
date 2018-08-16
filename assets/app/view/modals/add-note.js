@@ -79,41 +79,43 @@ class AddNoteModal extends React.Component {
     const { formData, saving } = this.state
 
     return (
-      <Modal id='add-note' saving={saving}>
-        <div className='modal-header'>
-          Add Note
-        </div>
-        <div className='modal-content'>
-          <div className='field'>
-            <label className='label'>Note</label>
-            <div className='value'>
-              <input className='input'
-                value={formData.content}
-                onChange={this.onInputChange}
-                placeholder='Add note...'
-                name='content'
-                type='text'
-                disabled={saving}
-              />
+      <Modal id='add-note-modal' saving={saving}>
+        <form onSubmit={this.onSubmit}>
+          <div className='modal-header'>
+            Add Note
+          </div>
+          <div className='modal-content'>
+            <div className='field'>
+              <div className='value'>
+                <input className='input'
+                  value={formData.content}
+                  onChange={this.onInputChange}
+                  placeholder='Add note...'
+                  name='content'
+                  type='text'
+                  disabled={saving}
+                  autoFocus
+                />
+              </div>
             </div>
           </div>
-        </div>
-        <div className='modal-footer'>
-          <button className='button button--secondary'
-            onClick={this.onCancelClick}
-            disabled={saving}
-            type='button'>
-            Cancel
-          </button>
-          <button className='button button--primary'
-            disabled={saving}
-            type='submit'>
-            Add Note
-          </button>
-        </div>
+          <div className='modal-footer'>
+            <button className='button button--secondary'
+              onClick={this.onCancelClick}
+              disabled={saving}
+              type='button'>
+              Cancel
+            </button>
+            <button className='button button--primary'
+              disabled={saving}
+              type='submit'>
+              Add Note
+            </button>
+          </div>
+        </form>
       </Modal>
     )
   }
 }
 
-export default reduxService.connectPage(AddNoteModal)
+export default reduxService.connect(AddNoteModal)

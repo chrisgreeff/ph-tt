@@ -1,0 +1,32 @@
+.input {
+  padding: 0 15px;
+  border-radius: 3px;
+  border: none;
+  background-color: #FFFFFF;
+  color: #1B2431;
+  transition: border-color ease-in-out 0.2s;
+  box-sizing: border-box;
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+  height: 40px;
+  width: 100%;
+  outline: none;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+
+  &:disabled {
+    cursor: default !important;
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &::placeholder {
+    text-overflow: ellipsis;
+    color: #A8A8A8;
+  }
+}

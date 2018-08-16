@@ -1,15 +1,18 @@
 import { map } from 'lodash'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { reduxService } from 'services'
-
+import { AddNoteModal } from 'view/modals'
 import { LoadingPage, Section } from 'view/components'
 
 class CustomerViewPage extends React.Component {
   static propTypes = {
     customer: PropTypes.object.isRequired,
+    fetchAndSetCustomer: PropTypes.func.isRequired,
+    showModal: PropTypes.func.isRequired,
   }
 
   constructor (props) {
@@ -26,6 +29,12 @@ class CustomerViewPage extends React.Component {
     this.setState({ loading: false })
   }
 
+  onAddNoteClick = () => {
+    const { showModal } = this.props
+
+    showModal('add-note-modal')
+  }
+
   render () {
     const { customer } = this.props
     const { loading } = this.state
@@ -40,6 +49,7 @@ class CustomerViewPage extends React.Component {
         <Section>
           <div className='section-content section-content--header'>
             Personal Information
+            <button className='button button--link' onClick={this.onUpdateStatusClick}>Update Status</button>
           </div>
           <div className='section-content'>
             <div className='field'>
@@ -56,7 +66,7 @@ class CustomerViewPage extends React.Component {
             </div>
             <div className='field'>
               <label className='label'>CreatedAt</label>
-              <div className='value'>{customer.createdAt.format('DD/MM/YYYY HH:MM')}</div>
+              <div className='value'>{customer.createdAt.format('ddd, DD MMM YYYY | (hh:mm A)')}</div>
             </div>
           </div>
         </Section>
@@ -64,16 +74,25 @@ class CustomerViewPage extends React.Component {
         <Section>
           <div className='section-content section-content--header'>
             Notes
+            <button className='button button--link' onClick={this.onAddNoteClick}>+ Add Note</button>
           </div>
-          {map(customer.notes, (note, index) => (
-            <div className='section-content' key={index}>
-              {note.content}
+          {customer.notes.length
+            ? <React.Fragment>
+              {map(customer.notes, (note, index) => (
+                <div className='section-content section-content--note' key={index}>
+                  <div className='field'>
+                    <label className='label label--secondary'>{note.createdAt.format('ddd, DD MMM YYYY | (hh:mm A)')}</label>
+                    <div className='value'>{note.content}</div>
+                  </div>
+                </div>
+              ))}
+            </React.Fragment>
+            : <div className='section-content'>
+            This customer has no notes.
             </div>
-          ))}
-          <div className='section-content'>
-            <button className='button button--primary' onClick={this.onAddNoteClick}>Add Note</button>
-          </div>
+          }
         </Section>
+        <AddNoteModal />
       </LoadingPage>
     )
   }

@@ -1,5 +1,6 @@
 import { uidService, errorService } from 'services'
 import { knex } from 'db'
+import customerNoteGetters from './getters'
 
 class CustomerNoteCreatorActions {
   /**
@@ -16,7 +17,7 @@ class CustomerNoteCreatorActions {
       await knex('customer_notes')
         .insert(input)
 
-      return input
+      return customerNoteGetters.getCustomerNoteById(input.id)
     } catch (error) {
       return errorService.handleDbError(error)
     }

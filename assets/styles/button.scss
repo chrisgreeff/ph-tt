@@ -17,7 +17,9 @@
   min-width: 120px;
   height: 40px;
   white-space: nowrap;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 
+  &:active { box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.5); }
   &:first-child { margin-left: 0; }
   &:last-child { margin-right: 0; }
 
@@ -40,4 +42,22 @@
     pointer-events: none !important;
     opacity: 0.5 !important;
   }
+}
+
+.button--link {
+  display: inline;
+  color: #7F8FA4;
+  height: auto;
+  background-color: transparent;
+  text-transform: none;
+  min-width: initial;
+  padding: 0;
+  margin: 0;
+  transition-property: color;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.2s;
+
+  &,
+  &:active { box-shadow: none; }
+  &:hover { text-decoration: underline; }
 }

@@ -13,7 +13,7 @@ class Modal extends React.Component {
     children: PropTypes.node,
     hideModal: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
-    saving: PropTypes.bool,
+    saving: PropTypes.any,
     visibleModalId: PropTypes.string,
   }
 
@@ -53,7 +53,7 @@ class Modal extends React.Component {
         <div id={id} className='modal'>
           <button className='modal-close'
             onClick={this.onCloseClick}
-            saving={saving}
+            disabled={saving}
             type='button'>
             X
           </button>
