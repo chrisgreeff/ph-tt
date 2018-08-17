@@ -1,3 +1,5 @@
+// This file implements the database fetch functions.
+
 import { forEach, filter } from 'lodash'
 import { errorService } from 'services'
 import { customerNoteGetters } from 'entities/customer-note'

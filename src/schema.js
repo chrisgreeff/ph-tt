@@ -1,3 +1,5 @@
+// This file defines the GraphQL Schema's queriy and mutation API it exposes.`
+
 import { GraphQLSchema, GraphQLObjectType } from 'graphql'
 
 import { customerQueries, customerMutations } from 'entities/customer'

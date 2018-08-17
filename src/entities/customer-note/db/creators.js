@@ -1,3 +1,5 @@
+// This file implements the database create functions.
+//
 import { uidService, errorService } from 'services'
 import { knex } from 'db'
 import customerNoteGetters from './getters'

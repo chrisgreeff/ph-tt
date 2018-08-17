@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:api": "cross-env NODE_ENV=development nodemon --watch src -e js api.js",
+    "start:api": "cross-env NODE_ENV=development nodemon --watch src -e js index.js",
     "start:app": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.js --mode development --open --progress",
     "db:setup": "./node_modules/knex/bin/cli.js migrate:latest && ./node_modules/knex/bin/cli.js seed:run"
   },

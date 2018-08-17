@@ -1,3 +1,5 @@
+// This file defines the `Customer` query API.
+
 import { customerGetters } from 'entities/customer'
 import { CustomerType } from './types'
 import { GraphQLList, GraphQLNonNull, GraphQLString } from 'graphql'

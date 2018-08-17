@@ -1,3 +1,5 @@
+// This service generates a uid with a passed prefix.
+
 class UidService {
   generate (prefix = '') {
     let date = new Date().getTime()

@@ -8,34 +8,39 @@ import {
   Modal
 } from 'view/components'
 
-class AddNoteModal extends React.Component {
+class UpdateNoteModal extends React.Component {
   static propTypes = {
-    createCustomerNote: PropTypes.func.isRequired,
+    customer: PropTypes.object.isRequired,
     fetchAndSetCustomer: PropTypes.func.isRequired,
     hideModal: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
+    modalContext: PropTypes.object.isRequired,
+    setModalContext: PropTypes.func.isRequired,
+    updateCustomerNote: PropTypes.func.isRequired,
   }
 
   constructor (props) {
     super(props)
 
-    this.state = {
-      formData: new CustomerNoteModel(),
-      saving: false,
-    }
+    this.state = { saving: false }
   }
 
   onSubmit = async (event) => {
-    const { createCustomerNote, customer, fetchAndSetCustomer, hideModal } = this.props
-    const { formData } = this.state
+    const {
+      updateCustomerNote,
+      fetchAndSetCustomer,
+      hideModal,
+      modalContext,
+      customer
+    } = this.props
+    const { formData } = modalContext
 
     event.preventDefault()
 
     try {
-      formData.customerId = customer.id
       this.setState({ saving: true })
 
-      await createCustomerNote(formData)
+      await updateCustomerNote(formData.id, formData)
       await fetchAndSetCustomer(customer.id)
 
       hideModal()
@@ -54,12 +59,12 @@ class AddNoteModal extends React.Component {
   }
 
   onInputChange = ({ target }) => {
-    const { formData } = this.state
+    const { modalContext: { formData }, setModalContext } = this.props
     const { name, value } = target
 
     formData[name] = value
 
-    this.setState({ formData })
+    setModalContext({ formData })
   }
 
   onCancelClick = () => {
@@ -71,13 +76,18 @@ class AddNoteModal extends React.Component {
   }
 
   render () {
-    const { formData, saving } = this.state
+    const { modalContext } = this.props
+    const { saving } = this.state
+
+    if (!modalContext.formData) { return '' }
+
+    const { formData } = modalContext
 
     return (
-      <Modal id='add-note-modal' saving={saving}>
+      <Modal id='update-note-modal' saving={saving}>
         <form onSubmit={this.onSubmit}>
           <div className='modal-header'>
-            Add Note
+            Update Note
           </div>
           <div className='modal-content'>
             <div className='field'>
@@ -85,7 +95,7 @@ class AddNoteModal extends React.Component {
                 <input className='input'
                   value={formData.content}
                   onChange={this.onInputChange}
-                  placeholder='Add note...'
+                  placeholder='Update note...'
                   name='content'
                   type='text'
                   disabled={saving}
@@ -104,7 +114,7 @@ class AddNoteModal extends React.Component {
             <button className='button button--primary'
               disabled={saving}
               type='submit'>
-              Add Note
+              Update Note
             </button>
           </div>
         </form>
@@ -113,4 +123,4 @@ class AddNoteModal extends React.Component {
   }
 }
 
-export default reduxService.connect(AddNoteModal)
+export default reduxService.connect(UpdateNoteModal)

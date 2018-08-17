@@ -1,3 +1,5 @@
+// This file implements the database update functions.
+//
 import { errorService } from 'services'
 import { knex } from 'db'
 import customerGetters from './getters'
@@ -11,21 +13,6 @@ const serialiseCustomer = (customer) => ({
 })
 
 class CustomerUpdaterActions {
-  async updateCustomer (id, input) {
-    try {
-      const existingCustomer = await customerGetters.getCustomerById(id)
-      const customer = { id, ...existingCustomer, ...input }
-
-      await knex('customers')
-        .where({ id })
-        .update(serialiseCustomer(customer))
-
-      return customerGetters.getCustomerById(id)
-    } catch (error) {
-      return errorService.handleDbError(error)
-    }
-  }
-
   async updateCustomerStatus (id, status) {
     try {
       const existingCustomer = await customerGetters.getCustomerById(id)

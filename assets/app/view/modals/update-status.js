@@ -23,7 +23,7 @@ class UpdateStatusModal extends React.Component {
   }
 
   onSubmit = async (event) => {
-    const { updateCustomerStatus, fetchAndSetCustomer, hideModal, modalContext, match: { params: { id } } } = this.props
+    const { updateCustomerStatus, fetchAndSetCustomer, hideModal, modalContext, customer } = this.props
     const { status } = modalContext
 
     event.preventDefault()
@@ -31,8 +31,8 @@ class UpdateStatusModal extends React.Component {
     try {
       this.setState({ saving: true })
 
-      await updateCustomerStatus(id, status)
-      await fetchAndSetCustomer(id)
+      await updateCustomerStatus(customer.id, status)
+      await fetchAndSetCustomer(customer.id)
 
       hideModal()
       this.reset()

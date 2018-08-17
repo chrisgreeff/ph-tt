@@ -1,3 +1,5 @@
+// This file implements the database fetch functions.
+//
 import { forEach } from 'lodash'
 import { errorService } from 'services'
 import { knex } from 'db'

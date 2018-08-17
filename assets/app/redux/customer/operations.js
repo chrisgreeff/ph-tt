@@ -23,14 +23,6 @@ const fetchAndSetCustomer = (id) => (dispatch) => {
   })
 }
 
-const updateCustomer = (id, formData) => (dispatch) => {
-  return customerResource.updateCustomer(id, formData).then((customer) => {
-    dispatch(setCustomer(customer))
-
-    return customer
-  })
-}
-
 const updateCustomerStatus = (id, status) => (dispatch) => {
   return customerResource.updateCustomerStatus(id, status).then((customer) => {
     dispatch(setCustomer(customer))
@@ -44,6 +36,5 @@ export default {
   fetchAndSetCustomers,
   setCustomer,
   setCustomers,
-  updateCustomer,
   updateCustomerStatus,
 }

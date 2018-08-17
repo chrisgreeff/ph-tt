@@ -18,12 +18,6 @@ class CustomerResource {
     }`).then(({ getCustomer }) => getCustomer && new CustomerModel(getCustomer))
   }
 
-  updateCustomer (id, model) {
-    return apiService.query(`mutation {
-      updateCustomer(id: "${id}", input: ${model.graphalise()}) { ${CUSTOMER_RESOURCE_FIELD} }
-    }`).then(({ updateCustomer }) => updateCustomer && new CustomerModel(updateCustomer))
-  }
-
   updateCustomerStatus (id, status) {
     return apiService.query(`mutation {
       updateCustomerStatus(

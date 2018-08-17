@@ -1,3 +1,5 @@
+// This fills the database with dummy data.
+
 exports.seed = async function(knex) {
   await knex('customer_notes').del()
   await knex('customers').del()

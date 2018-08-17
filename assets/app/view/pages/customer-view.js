@@ -1,11 +1,11 @@
-import { map } from 'lodash'
+import { cloneDeep, map } from 'lodash'
 
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 
 import { reduxService } from 'services'
-import { AddNoteModal, UpdateStatusModal } from 'view/modals'
+import { AddNoteModal, UpdateNoteModal, UpdateStatusModal } from 'view/modals'
 import { LoadingPage, Section } from 'view/components'
 
 class CustomerViewPage extends React.Component {
@@ -30,12 +30,6 @@ class CustomerViewPage extends React.Component {
     this.setState({ loading: false })
   }
 
-  onAddNoteClick = () => {
-    const { showModal } = this.props
-
-    showModal('add-note-modal')
-  }
-
   onUpdateStatusClick = () => {
     const { customer, showModal, setModalContext } = this.props
 
@@ -43,6 +37,21 @@ class CustomerViewPage extends React.Component {
 
     showModal('update-status-modal')
   }
+
+  onAddNoteClick = () => {
+    const { showModal } = this.props
+
+    showModal('add-note-modal')
+  }
+
+  onUpdateNoteClick = (customerNote) => {
+    const { showModal, setModalContext } = this.props
+
+    setModalContext({ formData: cloneDeep(customerNote) })
+
+    showModal('update-note-modal')
+  }
+
 
   render () {
     const { customer } = this.props
@@ -99,8 +108,11 @@ class CustomerViewPage extends React.Component {
                     <label className='label label--secondary'>
                       {note.createdAt.format('ddd, DD MMM YYYY | hh:mm A')}
                     </label>
-                    <div className='value'>
+                    <div className='value value--note'>
                       {note.content}
+                      <button className='button button--link' onClick={() => this.onUpdateNoteClick(note)}>
+                        Update
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -112,6 +124,7 @@ class CustomerViewPage extends React.Component {
           }
         </Section>
         <AddNoteModal />
+        <UpdateNoteModal />
         <UpdateStatusModal />
       </LoadingPage>
     )

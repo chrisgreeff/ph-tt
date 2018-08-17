@@ -15,7 +15,7 @@ class CustomerNoteResource {
     return apiService.query(`mutation {
       updateCustomerNote(
         id: "${id}",
-        model: "${model.graphalise()}"
+        input: ${model.graphalise()}
       ) { ${CUSTOMER_NOTE_RESOURCE_FIELD} }
     }`).then(({ updateCustomerNote }) => updateCustomerNote && new CustomerNoteModel(updateCustomerNote))
   }

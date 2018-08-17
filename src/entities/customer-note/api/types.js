@@ -1,3 +1,5 @@
+// This file defines the `CustomerNote` input and output types that the GraphQL API.
+
 import { GraphQLString, GraphQLObjectType, GraphQLInputObjectType, GraphQLNonNull } from 'graphql'
 
 const baseFields = {

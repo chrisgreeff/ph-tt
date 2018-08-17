@@ -1,3 +1,5 @@
+// This file defines the `Customer` input and output types that the GraphQL API.
+
 import { GraphQLString, GraphQLObjectType, GraphQLList, GraphQLInputObjectType, GraphQLNonNull } from 'graphql'
 import { CustomerNoteType } from 'entities/customer-note'
 

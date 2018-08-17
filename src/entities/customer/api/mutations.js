@@ -1,3 +1,5 @@
+// This file defines the `Customer` mutation API.
+
 import { CustomerInputType, CustomerType } from './types'
 import { customerUpdaters } from 'entities/customer'
 import { GraphQLString, GraphQLNonNull } from 'graphql'

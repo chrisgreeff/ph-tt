@@ -1,3 +1,5 @@
+// This file creates the `customers` table.
+//
 exports.up = function (knex) {
   return knex.schema.createTable('customers', function (t) {
     t.string('id').primary().unique()
