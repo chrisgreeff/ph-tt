@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start-server": "cross-env NODE_ENV=development nodemon --watch src -e js index.js",
-    "start-client": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.js --mode development --open --progress"
+    "start:api": "cross-env NODE_ENV=development nodemon --watch src -e js api.js",
+    "start:app": "cross-env NODE_ENV=development webpack-dev-server --config ./webpack.dev.js --mode development --open --progress"
   },
   "repository": "git@github.com:chrisgreeff/ph-tt.git",
   "author": "Chris Greeff <chris.r.greeff@gmail.com>",
