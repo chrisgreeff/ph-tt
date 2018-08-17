@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import { reduxService } from 'services'
 
-import { LoadingPage } from 'view/components'
+import { LoadingPage, Section } from 'view/components'
 
 class CustomerListPage extends React.Component {
   static propTypes = {
@@ -82,86 +82,88 @@ class CustomerListPage extends React.Component {
 
     return (
       <LoadingPage loading={loading}>
-        <h1>Customers</h1>
+        <Section>
+          <h1>Customers</h1>
 
-        <div className='table-topbar'>
-          <input className='input'
-            value={filterValue}
-            onChange={this.onFilterChange}
-            placeholder='Filter customers'
-          />
-          <div className='label label--topbar'>Showing {filteredCustomers.length} of {customers.length}</div>
-        </div>
-        <table className='table'>
-          <thead>
-            <tr>
-              <th>
-                <button className='button button--link'
-                  onClick={() => this.onSortClick('id')}>
-                  ID {this.renderSortIcon('id')}
-                </button>
-              </th>
-              <th>
-                <button className='button button--link'
-                  onClick={() => this.onSortClick('fullName')}>
-                  Name
-                  {this.renderSortIcon('fullName')}
-                </button>
-              </th>
-              <th>
-                <button className='button button--link'
-                  onClick={() => this.onSortClick('email')}>
-                  Email
-                  {this.renderSortIcon('email')}
-                </button>
-              </th>
-              <th>
-                <button className='button button--link'
-                  onClick={() => this.onSortClick('phone')}>
-                  Phone
-                  {this.renderSortIcon('phone')}
-                </button>
-              </th>
-              <th>
-                <button className='button button--link'
-                  onClick={() => this.onSortClick('status')}>
-                  Status
-                  {this.renderSortIcon('status')}
-                </button>
-              </th>
-              <th>
-                <button className='button button--link'
-                  onClick={() => this.onSortClick('createdAt')}>
-                  Created At
-                  {this.renderSortIcon('createdAt')}
-                </button>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredCustomers.length
-              ? <React.Fragment>
-                {map(this.getFilteredCustomers(), (customer, index) => (
-                  <tr key={index}>
-                    <td>{customer.id}</td>
-                    <td>
-                      <Link className='link' to={`/customers/${customer.id}`}>
-                        {customer.fullName}
-                      </Link>
-                    </td>
-                    <td>{customer.email}</td>
-                    <td>{customer.phone}</td>
-                    <td>{customer.status}</td>
-                    <td>{customer.createdAt.format('DD/MM/YYYY HH:MM')}</td>
-                  </tr>
-                ))}
-              </React.Fragment>
-              : <tr>
-                <td colSpan={7}>There are no customers that match your filter value</td>
+          <div className='table-topbar'>
+            <input className='input'
+              value={filterValue}
+              onChange={this.onFilterChange}
+              placeholder='Filter customers'
+            />
+            <div className='label label--topbar'>Showing {filteredCustomers.length} of {customers.length}</div>
+          </div>
+          <table className='table'>
+            <thead>
+              <tr>
+                <th>
+                  <button className='button button--link'
+                    onClick={() => this.onSortClick('id')}>
+                    ID {this.renderSortIcon('id')}
+                  </button>
+                </th>
+                <th>
+                  <button className='button button--link'
+                    onClick={() => this.onSortClick('fullName')}>
+                    Name
+                    {this.renderSortIcon('fullName')}
+                  </button>
+                </th>
+                <th>
+                  <button className='button button--link'
+                    onClick={() => this.onSortClick('email')}>
+                    Email
+                    {this.renderSortIcon('email')}
+                  </button>
+                </th>
+                <th>
+                  <button className='button button--link'
+                    onClick={() => this.onSortClick('phone')}>
+                    Phone
+                    {this.renderSortIcon('phone')}
+                  </button>
+                </th>
+                <th>
+                  <button className='button button--link'
+                    onClick={() => this.onSortClick('status')}>
+                    Status
+                    {this.renderSortIcon('status')}
+                  </button>
+                </th>
+                <th>
+                  <button className='button button--link'
+                    onClick={() => this.onSortClick('createdAt')}>
+                    Created At
+                    {this.renderSortIcon('createdAt')}
+                  </button>
+                </th>
               </tr>
-            }
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredCustomers.length
+                ? <React.Fragment>
+                  {map(this.getFilteredCustomers(), (customer, index) => (
+                    <tr key={index}>
+                      <td>{customer.id}</td>
+                      <td>
+                        <Link className='link' to={`/customers/${customer.id}`}>
+                          {customer.fullName}
+                        </Link>
+                      </td>
+                      <td>{customer.email}</td>
+                      <td>{customer.phone}</td>
+                      <td>{customer.status}</td>
+                      <td>{customer.createdAt.format('ddd, DD MMM YYYY | hh:mm A')}</td>
+                    </tr>
+                  ))}
+                </React.Fragment>
+                : <tr>
+                  <td colSpan={7}>There are no customers that match your filter value</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </Section>
       </LoadingPage>
     )
   }

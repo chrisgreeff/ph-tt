@@ -50,12 +50,12 @@ class CustomerViewPage extends React.Component {
 
     return (
       <LoadingPage loading={loading}>
-        <Section>
+        <Section view>
           <Link className='link' to='/customers'>Back</Link>
           <h1>{customer.fullName}</h1>
         </Section>
 
-        <Section>
+        <Section view>
           <div className='section-content section-content--header'>
             Personal Information
             <button className='button button--link' onClick={this.onUpdateStatusClick}>Update Status</button>
@@ -86,7 +86,7 @@ class CustomerViewPage extends React.Component {
           </div>
         </Section>
 
-        <Section>
+        <Section view>
           <div className='section-content section-content--header'>
             Notes
             <button className='button button--link' onClick={this.onAddNoteClick}>+ Add Note</button>
@@ -97,7 +97,7 @@ class CustomerViewPage extends React.Component {
                 <div className='section-content section-content--note' key={index}>
                   <div className='field'>
                     <label className='label label--secondary'>
-                      {note.createdAt.format('ddd, DD MMM YYYY | (hh:mm A)')}
+                      {note.createdAt.format('ddd, DD MMM YYYY | hh:mm A')}
                     </label>
                     <div className='value'>
                       {note.content}

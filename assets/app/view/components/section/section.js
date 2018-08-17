@@ -6,13 +6,17 @@ import PropTypes from 'prop-types'
 export default class Section extends React.Component {
   static propTypes = {
     children: PropTypes.node,
+    view: PropTypes.bool,
   }
 
   render () {
-    const { children } = this.props
+    const { children, view } = this.props
+    const classes = ['section']
+
+    if (view) { classes.push('section--view') }
 
     return (
-      <div className='section'>
+      <div className={classes.join(' ')}>
         <div className='section-wrap'>
           {children}
         </div>
