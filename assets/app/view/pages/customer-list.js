@@ -89,7 +89,7 @@ class CustomerListPage extends React.Component {
             <input className='input'
               value={filterValue}
               onChange={this.onFilterChange}
-              placeholder='Filter customers'
+              placeholder='Filter customers by name, email, status or phone'
             />
             <div className='label label--topbar'>Showing {filteredCustomers.length} of {customers.length}</div>
           </div>
