@@ -2,45 +2,36 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { reduxService } from 'services'
-import { CustomerNoteModel } from 'models'
 
-import {
-  Modal
-} from 'view/components'
+import { Modal } from 'view/components'
 
 class UpdateStatusModal extends React.Component {
   static propTypes = {
-    createCustomerNote: PropTypes.func.isRequired,
+    clearModalContext: PropTypes.func.isRequired,
     fetchAndSetCustomer: PropTypes.func.isRequired,
     hideModal: PropTypes.func.isRequired,
     match: PropTypes.object.isRequired,
+    modalContext: PropTypes.object.isRequired,
+    setModalContext: PropTypes.func.isRequired,
+    updateCustomerStatus: PropTypes.func.isRequired,
   }
 
   constructor (props) {
     super(props)
 
-    this.state = {
-      status: 'prospective',
-      saving: false,
-    }
+    this.state = { saving: false }
   }
 
   onSubmit = async (event) => {
-    const {
-      createCustomerNote,
-      fetchAndSetCustomer,
-      hideModal,
-      match: { params: { id } }
-    } = this.props
-    const { formData } = this.state
+    const { updateCustomerStatus, fetchAndSetCustomer, hideModal, modalContext, match: { params: { id } } } = this.props
+    const { status } = modalContext
 
     event.preventDefault()
 
     try {
-      formData.customerId = id
       this.setState({ saving: true })
 
-      await createCustomerNote(formData)
+      await updateCustomerStatus(id, status)
       await fetchAndSetCustomer(id)
 
       hideModal()
@@ -52,14 +43,16 @@ class UpdateStatusModal extends React.Component {
   }
 
   reset = () => {
-    this.setState({
-      formData: new CustomerNoteModel(),
-      saving: false,
-    })
+    const { clearModalContext } = this.props
+
+    clearModalContext()
+    this.setState({ saving: false })
   }
 
   onStatusChange = ({ target: { value: status } }) => {
-    this.setState({ status })
+    const { setModalContext } = this.props
+
+    setModalContext({ status })
   }
 
   onCancelClick = () => {
@@ -71,7 +64,13 @@ class UpdateStatusModal extends React.Component {
   }
 
   render () {
-    const { saving, status } = this.state
+    const { modalContext } = this.props
+    const { saving } = this.state
+
+    // If the modal context hasn't been set, we can't render this modal.
+    if (!modalContext.status) { return '' }
+
+    const { status } = modalContext
 
     return (
       <Modal id='update-status-modal' saving={saving}>
@@ -122,7 +121,7 @@ class UpdateStatusModal extends React.Component {
             <button className='button button--primary'
               disabled={saving}
               type='submit'>
-              Add Note
+              Update Status
             </button>
           </div>
         </form>

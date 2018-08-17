@@ -12,6 +12,7 @@ class CustomerViewPage extends React.Component {
   static propTypes = {
     customer: PropTypes.object.isRequired,
     fetchAndSetCustomer: PropTypes.func.isRequired,
+    setModalContext: PropTypes.func.isRequired,
     showModal: PropTypes.func.isRequired,
   }
 
@@ -36,7 +37,9 @@ class CustomerViewPage extends React.Component {
   }
 
   onUpdateStatusClick = () => {
-    const { showModal } = this.props
+    const { customer, showModal, setModalContext } = this.props
+
+    setModalContext({ status: customer.status })
 
     showModal('update-status-modal')
   }
@@ -62,14 +65,20 @@ class CustomerViewPage extends React.Component {
               <label className='label'>Email</label>
               <div className='value'>{customer.email}</div>
             </div>
+          </div>
+          <div className='section-content'>
             <div className='field'>
               <label className='label'>Phone</label>
               <div className='value'>{customer.phone}</div>
             </div>
+          </div>
+          <div className='section-content'>
             <div className='field'>
               <label className='label'>Status</label>
               <div className='value'>{customer.status}</div>
             </div>
+          </div>
+          <div className='section-content'>
             <div className='field'>
               <label className='label'>CreatedAt</label>
               <div className='value'>{customer.createdAt.format('ddd, DD MMM YYYY | (hh:mm A)')}</div>
@@ -87,8 +96,12 @@ class CustomerViewPage extends React.Component {
               {map(customer.notes, (note, index) => (
                 <div className='section-content section-content--note' key={index}>
                   <div className='field'>
-                    <label className='label label--secondary'>{note.createdAt.format('ddd, DD MMM YYYY | (hh:mm A)')}</label>
-                    <div className='value'>{note.content}</div>
+                    <label className='label label--secondary'>
+                      {note.createdAt.format('ddd, DD MMM YYYY | (hh:mm A)')}
+                    </label>
+                    <div className='value'>
+                      {note.content}
+                    </div>
                   </div>
                 </div>
               ))}

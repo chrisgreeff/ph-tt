@@ -76,19 +76,22 @@ class CustomerListPage extends React.Component {
   }
 
   render () {
+    const { customers } = this.props
     const { loading, filterValue } = this.state
-    const customers = this.getFilteredCustomers()
+    const filteredCustomers = this.getFilteredCustomers()
 
     return (
       <LoadingPage loading={loading}>
         <h1>Customers</h1>
 
-        <input className='input'
-          value={filterValue}
-          onChange={this.onFilterChange}
-          placeholder='Filter customers'
-        />
-
+        <div className='table-topbar'>
+          <input className='input'
+            value={filterValue}
+            onChange={this.onFilterChange}
+            placeholder='Filter customers'
+          />
+          <div className='label label--topbar'>Showing {filteredCustomers.length} of {customers.length}</div>
+        </div>
         <table className='table'>
           <thead>
             <tr>
@@ -136,7 +139,7 @@ class CustomerListPage extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {customers.length
+            {filteredCustomers.length
               ? <React.Fragment>
                 {map(this.getFilteredCustomers(), (customer, index) => (
                   <tr key={index}>
