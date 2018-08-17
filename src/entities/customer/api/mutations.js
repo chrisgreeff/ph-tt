@@ -1,6 +1,6 @@
 import { CustomerInputType, CustomerType } from './types'
+import { customerUpdaters } from 'entities/customer'
 import { GraphQLString, GraphQLNonNull } from 'graphql'
-import { customerMutationResolvers } from 'entities/customer'
 
 export default {
   updateCustomer: {
@@ -10,7 +10,7 @@ export default {
       id: { type: new GraphQLNonNull(GraphQLString) },
       input: { type: new GraphQLNonNull(CustomerInputType) }
     },
-    resolve: (...args) => customerMutationResolvers.updateCustomer(...args)
+    resolve: (rt, { id, input }) => customerUpdaters.updateCustomer(id, input)
   },
   updateCustomerStatus: {
     type: CustomerType,
@@ -19,6 +19,6 @@ export default {
       id: { type: new GraphQLNonNull(GraphQLString) },
       status: { type: new GraphQLNonNull(GraphQLString) }
     },
-    resolve: (...args) => customerMutationResolvers.updateCustomerStatus(...args)
+    resolve: (rt, { id, status }) => customerUpdaters.updateCustomerStatus(id, status)
   }
 }

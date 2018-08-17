@@ -1,6 +1,6 @@
 import { CustomerNoteInputType, CustomerNoteType } from './types'
-import { GraphQLString, GraphQLNonNull } from 'graphql'
-import { customerNoteMutationResolvers } from 'entities/customer-note'
+import { GraphQLNonNull } from 'graphql'
+import { customerNoteCreators } from 'entities/customer-note'
 
 export default {
   createCustomerNote: {
@@ -9,15 +9,6 @@ export default {
     args: {
       input: { type: new GraphQLNonNull(CustomerNoteInputType) }
     },
-    resolve: (...args) => customerNoteMutationResolvers.createCustomerNote(...args)
-  },
-  updateCustomerNote: {
-    type: CustomerNoteType,
-    description: 'Updates the customer note with the passed id',
-    args: {
-      id: { type: new GraphQLNonNull(GraphQLString) },
-      input: { type: new GraphQLNonNull(CustomerNoteInputType) }
-    },
-    resolve: (...args) => customerNoteMutationResolvers.updateCustomerNote(...args)
+    resolve: (rt, { input }) => customerNoteCreators.createCustomerNote(input)
   }
 }

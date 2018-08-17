@@ -4,11 +4,6 @@ import { customerNoteGetters } from 'entities/customer-note'
 import { knex } from 'db'
 
 class CustomerGetterActions {
-  /**
-   * Fetches all customers.
-   *
-   * @method getCustomers
-   */
   async getCustomers () {
     try {
       const [ customers, notes ] = await Promise.all([
@@ -27,13 +22,6 @@ class CustomerGetterActions {
     }
   }
 
-  /**
-   * Fetches customer with passed id.
-   *
-   * @method getCustomerById
-   * @param {String} id
-   *        The customer id.
-   */
   async getCustomerById (id) {
     try {
       const [ customer ] = await knex('customers')

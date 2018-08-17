@@ -3,11 +3,6 @@ import { errorService } from 'services'
 import { knex } from 'db'
 
 class CustomerNoteGetterActions {
-  /**
-   * Fetches all customer notes.
-   *
-   * @method getCustomerNotes
-   */
   async getCustomerNotes () {
     try {
       const customerNotes = await knex('customer_notes')
@@ -23,13 +18,6 @@ class CustomerNoteGetterActions {
     }
   }
 
-  /**
-   * Fetches note with passed id.
-   *
-   * @method getCustomerNoteById
-   * @param {String} id
-   *        The note id.
-   */
   async getCustomerNoteById (id) {
     try {
       const [ customerNote ] = await knex('customer_notes')
@@ -44,13 +32,6 @@ class CustomerNoteGetterActions {
     }
   }
 
-  /**
-   * Fetches note with passed customer id.
-   *
-   * @method getCustomerNotesByCustomerId
-   * @param {String} customerId
-   *        The customer id.
-   */
   async getCustomerNotesByCustomerId (customerId) {
     try {
       const customerNotes = await knex('customer_notes')

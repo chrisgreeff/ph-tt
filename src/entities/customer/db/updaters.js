@@ -11,16 +11,6 @@ const serialiseCustomer = (customer) => ({
 })
 
 class CustomerUpdaterActions {
-  /**
-   * Updates a customer entry with the passed id.
-   *
-   * @method updateCustomer
-   * @param {String} id
-   *        The customer id.
-   *
-   * @param {Object} input
-   *        Input to update the customer with.
-   */
   async updateCustomer (id, input) {
     try {
       const existingCustomer = await customerGetters.getCustomerById(id)
@@ -36,16 +26,6 @@ class CustomerUpdaterActions {
     }
   }
 
-  /**
-   * Updates a customer with the passed id status.
-   *
-   * @method updateCustomer
-   * @param {String} id
-   *        The customer id.
-   *
-   * @param {String} status
-   *        The status to update the customer with.
-   */
   async updateCustomerStatus (id, status) {
     try {
       const existingCustomer = await customerGetters.getCustomerById(id)

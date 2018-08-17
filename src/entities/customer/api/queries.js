@@ -1,12 +1,12 @@
+import { customerGetters } from 'entities/customer'
 import { CustomerType } from './types'
 import { GraphQLList, GraphQLNonNull, GraphQLString } from 'graphql'
-import { customerQueryResolvers } from 'entities/customer'
 
 export default {
   customers: {
     type: new GraphQLList(CustomerType),
     description: 'List all customers',
-    resolve: (...args) => customerQueryResolvers.customers(...args)
+    resolve: () => customerGetters.getCustomers()
   },
   getCustomer: {
     type: CustomerType,
@@ -14,6 +14,6 @@ export default {
     args: {
       id: { type: new GraphQLNonNull(GraphQLString) }
     },
-    resolve: (...args) => customerQueryResolvers.getCustomer(...args)
+    resolve: (rt, { id }) => customerGetters.getCustomerById(id)
   }
 }

@@ -4,8 +4,6 @@ class ErrorService {
     console.error(error.stack)
 
     throw new Error()
-
-    return error
   }
 }
 
