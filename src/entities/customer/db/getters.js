@@ -1,4 +1,4 @@
-// This file implements the database fetch functions.
+// This file implements the customer database fetch functions.
 
 import { forEach, filter } from 'lodash'
 import { errorService } from 'services'

@@ -1,4 +1,4 @@
-// This file implements the database fetch functions.
+// This file implements the customer note database fetch functions.
 //
 import { forEach } from 'lodash'
 import { errorService } from 'services'

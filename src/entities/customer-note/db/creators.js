@@ -1,4 +1,4 @@
-// This file implements the database create functions.
+// This file implements the customer note database create functions.
 //
 import { uidService, errorService } from 'services'
 import { knex } from 'db'

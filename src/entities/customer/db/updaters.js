@@ -1,4 +1,4 @@
-// This file implements the database update functions.
+// This file implements the customer database update functions.
 //
 import { errorService } from 'services'
 import { knex } from 'db'
